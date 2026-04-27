@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A un Clic — Efectos de Vídeo para Diseñadores</title>
+<title>MotionForge — Efectos de Vídeo para Diseñadores</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -435,10 +435,11 @@ footer strong { color: var(--text); }
 
 <!-- NAV -->
 <nav>
-  <div class="logo">A un<span>Clic</span></div>
+  <div class="logo">Motion<span>Forge</span></div>
   <div class="nav-links">
     <a href="#app">Efectos</a>
     <a href="#pricing-section">Precios</a>
+    <a href="https://github.com" target="_blank">GitHub</a>
   </div>
   <a href="#app" class="nav-cta">Empezar gratis</a>
 </nav>
@@ -608,7 +609,7 @@ footer strong { color: var(--text); }
           <li>Vídeo en HD (1280×720)</li>
           <li>Todos los efectos disponibles</li>
           <li>Descarga inmediata</li>
-          <li class="no">Con marca de agua AunClic</li>
+          <li class="no">Con marca de agua MotionForge</li>
           <li class="no">Sin acceso a resolución Full HD</li>
         </ul>
         <button class="dl-btn free-btn" id="downloadFreeBtn" onclick="downloadVideo(true)">⬇ Descargar con marca de agua</button>
@@ -669,7 +670,7 @@ footer strong { color: var(--text); }
 </section>
 
 <footer>
-  <strong>AunClic</strong> — Efectos de vídeo profesionales para diseñadores gráficos.<br>
+  <strong>MotionForge</strong> — Efectos de vídeo profesionales para diseñadores gráficos.<br>
   <span style="font-size:12px; margin-top:8px; display:block;">Procesado completamente en tu navegador. Sin servidores. Sin uploads. 100% privado.</span>
 </footer>
 
@@ -1264,7 +1265,7 @@ function downloadVideo(withWatermark) {
     addWatermarkAndDownload();
   } else {
     if (!isPaid) { openPayment(); return; }
-    triggerDownload(renderedBlob, 'aunclic-pro.webm');
+    triggerDownload(renderedBlob, 'motionforge-pro.webm');
   }
 }
 
@@ -1287,7 +1288,7 @@ function addWatermarkAndDownload() {
     waterRec.ondataavailable = e => { if (e.data.size > 0) waterChunks.push(e.data); };
     waterRec.onstop = () => {
       const waterBlob = new Blob(waterChunks, { type: mimeType });
-      triggerDownload(waterBlob, 'aunclic-free.webm');
+      triggerDownload(waterBlob, 'motionforge-free.webm');
       URL.revokeObjectURL(url);
     };
     waterRec.start();
@@ -1303,12 +1304,12 @@ function addWatermarkAndDownload() {
       offCtx.font = `bold ${fs}px Arial`;
       offCtx.textAlign = 'center';
       offCtx.rotate(-0.2);
-      offCtx.fillText('AunClic.io', offCanvas.width / 2, offCanvas.height / 2 + 40);
+      offCtx.fillText('motionforge.io', offCanvas.width / 2, offCanvas.height / 2 + 40);
       offCtx.rotate(0.2);
       offCtx.globalAlpha = 0.4;
       offCtx.font = `bold ${offCanvas.width/20}px Arial`;
       offCtx.textAlign = 'right';
-      offCtx.fillText('AunClic.io', offCanvas.width - 20, offCanvas.height - 20);
+      offCtx.fillText('motionforge.io', offCanvas.width - 20, offCanvas.height - 20);
       offCtx.restore();
       requestAnimationFrame(drawWaterFrame);
     }
@@ -1316,7 +1317,7 @@ function addWatermarkAndDownload() {
   };
   video.onerror = () => {
     // Fallback: just download without watermark processing if video can't load
-    triggerDownload(renderedBlob, 'aunclic-free.webm');
+    triggerDownload(renderedBlob, 'motionforge-free.webm');
   };
   video.load();
 }
@@ -1342,7 +1343,7 @@ function simulatePayment() {
   isPaid = true;
   closePayment();
   showToast('✅ ¡Pago completado! Descargando vídeo sin marca de agua...', 'ok');
-  setTimeout(() => { if (renderedBlob) triggerDownload(renderedBlob, 'aunclic-pro.webm'); }, 800);
+  setTimeout(() => { if (renderedBlob) triggerDownload(renderedBlob, 'motionforge-pro.webm'); }, 800);
 }
 
 // ============================================================
